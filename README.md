@@ -1,25 +1,49 @@
-# AI Lab 5 - Adversarial Search: Minimax & Alpha-Beta Pruning
+# Lab 6: NLP Fundamentals - Tokenization, Embeddings & Text Chunking
 
-## Files
-- `Lab5_Report.docx`: report for Tasks 1-3 (manual Minimax trace, leaf counters, alpha-beta trace, reordering experiments, edge cases)
-- `lab5_minimax.py`: supplied Minimax, bottom-up level table, root action, and a leaf-counting version
-- `lab5_alphabeta.py`: supplied alpha-beta, leaf-counting version, and a per-node pruning trace
-- `lab5_reorder.py`: branch reordering (original / best-first / worst-first / all 128 child-swap arrangements) and edge cases
-- `outputs/`: captured outputs of the three scripts
+This folder contains the complete, executable solution for **Lab 6 (CA1601400 - Artificial Intelligence Lab)**.
 
-## Requirements
-- Python 3 (standard library only)
-- Microsoft Word or a compatible DOCX reader for the report
+## Project Structure
+- `lab6_search.py`: Core `Retriever` class supporting TF-IDF and Sentence Transformer backends.
+- `task1_tokens.py`: Script comparing Whitespace, Regex, and Subword tokenization across edge-case strings.
+- `guided_chatbot.py` & `task1_chatbot_check.py`: Confirmation-based FAQ chatbot implementation and assertions.
+- `task2_chunks.py`: Text chunking algorithms (Word-windows & Sentence-aware splitting) with unit tests.
+- `create_dataset.py`: Script to generate `corpus.json` and `queries.json` datasets.
+- `task3_retrieval.py`: Pipeline evaluation script generating `retrieval_log.csv` (Hit@3 & MRR@3 metrics).
+- `document_chatbot.py`: Interactive traceable document retrieval chatbot interface.
 
-## Run
-```bash
-python lab5_minimax.py
-python lab5_alphabeta.py
-python lab5_reorder.py
-```
+## Setup Instructions
 
-Each script uses `assert` statements and prints "All checks passed" on success.
+1. **Create and Activate Virtual Environment**:
+   ```bash
+   python -m venv .venv
+   # On Windows PowerShell:
+   .venv\Scripts\Activate.ps1
+   # On Linux/macOS:
+   source .venv/bin/activate
+   ```
 
-Tree 1 is the Section 5.1 scores [3, 5, 2, 9, 0, 7] padded with 0 to 8 leaves (the padding value is
-an assumption of the supplied driver). Tree 2 is the Section 5.2 scores [3, 5, 2, 9, 3, 5, 2, 9].
-The leaf counter is incremented in the terminal case.
+2. **Install Dependencies**:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. **Execution Steps**:
+   ```bash
+   # Run Task 1 Tokenization Analysis
+   python task1_tokens.py
+
+   # Test FAQ Chatbot
+   python task1_chatbot_check.py
+
+   # Run Task 2 Chunking Unit Tests
+   python task2_chunks.py
+
+   # Generate Datasets
+   python create_dataset.py
+
+   # Run Task 3 Retrieval Evaluation Pipeline
+   python task3_retrieval.py
+
+   # Launch Interactive Document Chatbot
+   python document_chatbot.py
+   ```
