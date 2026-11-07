@@ -1,11 +1,11 @@
-# AI Lab 3 - Uninformed Search: BFS, DFS, DLS, IDDFS & UCS
+# AI Lab 4 - Informed Search: Heuristics & A*
 
 ## Files
-- `Lab3_Report.docx`: report for Tasks 1-3 (manual traces, DLS/IDDFS results, weighted graph, UCS vs BFS, edge case)
-- `lab3_bfs_dfs.py`: supplied BFS/DFS plus traced versions that print the frontier after every step
-- `lab3_depth_search.py`: DLS and IDDFS with path-local cycle check (FOUND / CUTOFF / FAILURE) and edge-case tests
-- `lab3_ucs.py`: weighted graph, UCS, BFS on the same topology, independent path-cost check
-- `outputs/`: captured outputs of the three scripts
+- `Lab4_Report.docx`: report for Tasks 1-3 (heuristic audit, manual g/h/f, A* vs UCS, overestimate experiment, edge case)
+- `lab4_astar.py`: supplied A* plus a traced version that records every step and the frontier
+- `lab4_astar_audit.py`: admissibility and consistency audit, first-three-expansions check
+- `lab4_compare.py`: A* vs UCS control (h = 0), h(C) = 10 experiment, sweep of h(C), edge cases
+- `outputs/`: captured outputs of the two runnable scripts
 
 ## Requirements
 - Python 3 (standard library only)
@@ -13,12 +13,12 @@
 
 ## Run
 ```bash
-python lab3_bfs_dfs.py
-python lab3_depth_search.py
-python lab3_ucs.py
+python lab4_astar_audit.py
+python lab4_compare.py
 ```
 
-Each script uses `assert` statements and prints "All checks passed" or "Verified" on success.
+Both scripts use `assert` statements and print "All checks passed" on success.
 
-The edge weights and the added corridor C -> G are synthetic lab assumptions (Manual 3.7).
-Search counts include the goal node when it is processed.
+The graph and heuristic are supplied by the manual and are abstract time estimates.
+A node is counted as expanded when its successors are examined; goal processing and
+stale queue entries are not counted as expansions.
